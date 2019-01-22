@@ -1,4 +1,4 @@
-function fullLine(w,c)
+function fullLine_answer(w,c)
 {
 	var s = "";
 	for(var i=0;i<w;i++)
@@ -9,17 +9,17 @@ function fullLine(w,c)
 	return s;
 }
 
-function fullRectangle(w,h,c)
+function fullRectangle_answer(w,h,c)
 {
 	var s="";
 	for(var i=0;i<h;i++)
 	{
-		s += fullLine(w,c);
+		s += fullLine_answer(w,c);
 	}
 	return s;
 }
 
-function emptyLine(w,c1,c2)
+function emptyLine_answer(w,c1,c2)
 {
 	var s = c1;
 	for(var i=0; i<w-2;i++)
@@ -34,31 +34,31 @@ function emptyLine(w,c1,c2)
 	return s;
 }
 
-function emptyRectangle(w,h,c1,c2)
+function emptyRectangle_answer(w,h,c1,c2)
 {
-	var s = fullLine(w,c1);
+	var s = fullLine_answer(w,c1);
 	for(var i=0 ; i<h-2 ; i++)
 	{
-		s += emptyLine(w,c1,c2);
+		s += emptyLine_answer(w,c1,c2);
 	}
 	if(h>1)
 	{
-		s += fullLine(w,c1);
+		s += fullLine_answer(w,c1);
 	}
 	return s;
 }
 
-function fullTriangle1(h,c)
+function fullTriangle1_answer(h,c)
 {
 	var s = "";
 	for(var i=1 ; i<=h ; i++)
 	{
-		s += fullLine(i,c);
+		s += fullLine_answer(i,c);
 	}
 	return s;
 }
 
-function fullTriangle2(h,c1,c2)
+function fullTriangle2_answer(h,c1,c2)
 {
 	var s = "";
 	for(var i=1 ; i<=h ; i++)
@@ -67,12 +67,12 @@ function fullTriangle2(h,c1,c2)
 		{
 			s+=c2;
 		}
-		s += fullLine(i,c1);
+		s += fullLine_answer(i,c1);
 	}
 	return s;
 }
 
-function fullTriangle3(h,c1,c2)
+function fullTriangle3_answer(h,c1,c2)
 {
 	var s = "";
 	var nbC2 = h-1;
@@ -83,7 +83,7 @@ function fullTriangle3(h,c1,c2)
 		{
 			s+=c2;
 		}
-		s += fullLine(nbC1,c1);
+		s += fullLine_answer(nbC1,c1);
 		
 		nbC2--;
 		nbC1 += 2;
@@ -91,18 +91,18 @@ function fullTriangle3(h,c1,c2)
 	return s;
 }
 
-function emptyTriangle1(h,c1,c2)
+function emptyTriangle1_answer(h,c1,c2)
 {
 	var s = "";
 	for(var i=1 ; i<=h-1 ; i++)
 	{
-		s += emptyLine(i,c1,c2);
+		s += emptyLine_answer(i,c1,c2);
 	}
-	s += fullLine(h,c1);
+	s += fullLine_answer(h,c1);
 	return s;
 }
 
-function emptyTriangle2(h,c1,c2)
+function emptyTriangle2_answer(h,c1,c2)
 {
 	var s = "";
 	for(var i=1 ; i<=h-1 ; i++)
@@ -111,13 +111,13 @@ function emptyTriangle2(h,c1,c2)
 		{
 			s+=c2;
 		}
-		s += emptyLine(i,c1,c2);
+		s += emptyLine_answer(i,c1,c2);
 	}
-	s += fullLine(h,c1);
+	s += fullLine_answer(h,c1);
 	return s;
 }
 
-function emptyTriangle3(h,c1,c2)
+function emptyTriangle3_answer(h,c1,c2)
 {
 	var s = "";
 	var nbC2 = h-1;
@@ -128,11 +128,11 @@ function emptyTriangle3(h,c1,c2)
 		{
 			s+=c2;
 		}
-		s += emptyLine(nbC1,c1,c2);
+		s += emptyLine_answer(nbC1,c1,c2);
 		
 		nbC2--;
 		nbC1 += 2;
 	}
-	s += fullLine(nbC1,c1);
+	s += fullLine_answer(nbC1,c1);
 	return s;
 }

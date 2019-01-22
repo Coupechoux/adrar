@@ -1,0 +1,5 @@
+﻿*~
+p5/empty-example/
+*.aux
+*.log
+*.synctex.gz

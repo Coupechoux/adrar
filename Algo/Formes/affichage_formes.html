@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<style>
+		
 			.shapes-container {
 				display: flex;
 				flex-wrap: wrap;
@@ -21,7 +22,7 @@
 				flex-direction: column;
 				border: solid 3px black;
 			}
-			.drawing {
+			.drawing, .drawing_answer{
 				display: flex;
 				flex_direction: column;
 				font-family: monospace;
@@ -29,18 +30,26 @@
 				padding: 2px;
 				border: dotted 1px black;
 			}
+			.drawing_answer {
+				color: rgb(100,200,100);
+				border: dashed 1px rgb(100,200,100);
+			}
 		</style>
-		<script type = "text/javascript" src = "formes.js" ></script>
+		<script type = "text/javascript" src = "a_remplir.js" ></script>
+		<script type = "text/javascript" src = "corrige.js" ></script>
 		<script>
-			function updateDrawing(rangeId1, rangeId2, drawingId, fun, c1, c2) {
+			function updateDrawing(rangeId1, rangeId2, drawingId, drawingId_answer, fun, fun_answer, c1, c2) {
 				var range1 = document.getElementById(rangeId1);
 				var range2 = document.getElementById(rangeId2);
 				var drawing = document.getElementById(drawingId);
+				var drawing_answer = document.getElementById(drawingId_answer);
 				if(range2 === null) {
 					drawing.innerHTML = fun(range1.value,c1,c2);
+					drawing_answer.innerHTML = fun_answer(range1.value,c1,c2);
 				}
 				else {
 					drawing.innerHTML = fun(range1.value,range2.value,c1,c2);
+					drawing_answer.innerHTML = fun_answer(range1.value,range2.value,c1,c2);
 				}
 			}
 		</script>
@@ -56,14 +65,20 @@
 			<div class="drawing" id="fullLineDrawing">
 				<script>document.write(fullLine(3,'+'));</script>
 			</div>
-			<input type="range" id="fullLineRange" min="1" max="20" value="3" onchange="updateDrawing('fullLineRange','','fullLineDrawing',fullLine,'+','-');">
+			<div class="drawing_answer" id="fullLineDrawing_answer">
+				<script>document.write(fullLine_answer(3,'+'));</script>
+			</div>
+			<input type="range" id="fullLineRange" min="1" max="20" value="3" onchange="updateDrawing('fullLineRange','','fullLineDrawing','fullLineDrawing_answer',fullLine,fullLine_answer,'+','-');">
 		</div>
 		<div class="example-container">
 			Ligne vide :
 			<div class="drawing" id="emptyLineDrawing">
-				<script>document.write(emptyLine(3,'+','&nbsp;'));</script>
+				<script>document.write(emptyLine(3,'+','-'));</script>
 			</div>
-			<input type="range" id="emptyLineRange" min="1" max="20" value="3" onchange="updateDrawing('emptyLineRange','','emptyLineDrawing',emptyLine,'+','-');">
+			<div class="drawing_answer" id="emptyLineDrawing_answer">
+				<script>document.write(emptyLine_answer(3,'+','-'));</script>
+			</div>
+			<input type="range" id="emptyLineRange" min="1" max="20" value="3" onchange="updateDrawing('emptyLineRange','','emptyLineDrawing','emptyLineDrawing_answer',emptyLine,emptyLine_answer,'+','-');">
 		</div>
 	</div>
 	<div class="shape" name="Rectangles">
@@ -73,16 +88,22 @@
 			<div class="drawing" id="fullRectangleDrawing">
 				<script>document.write(fullRectangle(4,2,'+'));</script>
 			</div>
-			<input type="range" id="fullRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing',fullRectangle,'+','-');">
-			<input type="range" id="fullRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing',fullRectangle,'+','-');">
+			<div class="drawing_answer" id="fullRectangleDrawing_answer">
+				<script>document.write(fullRectangle_answer(4,2,'+'));</script>
+			</div>
+			<input type="range" id="fullRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing','fullRectangleDrawing_answer',fullRectangle,fullRectangle_answer,'+','-');">
+			<input type="range" id="fullRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing','fullRectangleDrawing_answer',fullRectangle,fullRectangle_answer,'+','-');">
 		</div>
 		<div class="example-container">
 			Rectangle vide :
 			<div class="drawing" id="emptyRectangleDrawing">
-				<script>document.write(fullRectangle(4,2,'+'));</script>
+				<script>document.write(emptyRectangle(4,2,'+','-'));</script>
 			</div>
-			<input type="range" id="emptyRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing',emptyRectangle,'+','-');">
-			<input type="range" id="emptyRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing',emptyRectangle,'+','-');">
+			<div class="drawing_answer" id="emptyRectangleDrawing_answer">
+				<script>document.write(emptyRectangle_answer(4,2,'+','-'));</script>
+			</div>
+			<input type="range" id="emptyRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing','emptyRectangleDrawing_answer',emptyRectangle,emptyRectangle_answer,'+','-');">
+			<input type="range" id="emptyRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing','emptyRectangleDrawing_answer',emptyRectangle,emptyRectangle_answer,'+','-');">
 		</div>
 	</div>
 
@@ -93,21 +114,31 @@
 			<div class="drawing" id="fullTriangle1Drawing">
 				<script>document.write(fullTriangle1(3,'+'));</script>
 			</div>
-			<input type="range" id="fullTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle1Range','','fullTriangle1Drawing',fullTriangle1,'+','-');">
+			<div class="drawing_answer" id="fullTriangle1Drawing_answer">
+				<script>document.write(fullTriangle1_answer(3,'+'));</script>
+			</div>
+			<input type="range" id="fullTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle1Range','','fullTriangle1Drawing','fullTriangle1Drawing_answer',fullTriangle1,fullTriangle1_answer,'+','-');">
 		</div>
+		
 		<div class="example-container">
 			Triangle rectangle à droite plein :
 			<div class="drawing" id="fullTriangle2Drawing">
 				<script>document.write(fullTriangle2(3,'+','-'));</script>
 			</div>
-			<input type="range" id="fullTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle2Range','','fullTriangle2Drawing',fullTriangle2,'+','-');">
+			<div class="drawing_answer" id="fullTriangle2Drawing_answer">
+				<script>document.write(fullTriangle2_answer(3,'+','-'));</script>
+			</div>
+			<input type="range" id="fullTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle2Range','','fullTriangle2Drawing','fullTriangle2Drawing_answer',fullTriangle2,fullTriangle2_answer,'+','-');">
 		</div>
 		<div class="example-container">
 			Triangle rectangle centré plein :
 			<div class="drawing" id="fullTriangle3Drawing">
 				<script>document.write(fullTriangle3(3,'+','-'));</script>
 			</div>
-			<input type="range" id="fullTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle3Range','','fullTriangle3Drawing',fullTriangle3,'+','-');">
+			<div class="drawing_answer" id="fullTriangle3Drawing_answer">
+				<script>document.write(fullTriangle3_answer(3,'+','-'));</script>
+			</div>
+			<input type="range" id="fullTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle3Range','','fullTriangle3Drawing','fullTriangle3Drawing_answer',fullTriangle3,fullTriangle3_answer,'+','-');">
 		</div>
 		
 		<div class="example-container">
@@ -115,21 +146,30 @@
 			<div class="drawing" id="emptyTriangle1Drawing">
 				<script>document.write(fullTriangle1(3,'+'));</script>
 			</div>
-			<input type="range" id="emptyTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle1Range','','emptyTriangle1Drawing',emptyTriangle1,'+','-');">
+			<div class="drawing_answer" id="emptyTriangle1Drawing_answer">
+				<script>document.write(fullTriangle1_answer(3,'+'));</script>
+			</div>
+			<input type="range" id="emptyTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle1Range','','emptyTriangle1Drawing','emptyTriangle1Drawing_answer',emptyTriangle1,emptyTriangle1_answer,'+','-');">
 		</div>
 		<div class="example-container">
 			Triangle rectangle à droite vide :
 			<div class="drawing" id="emptyTriangle2Drawing">
 				<script>document.write(emptyTriangle2(3,'+','-'));</script>
 			</div>
-			<input type="range" id="emptyTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle2Range','','emptyTriangle2Drawing',emptyTriangle2,'+','-');">
+			<div class="drawing_answer" id="emptyTriangle2Drawing_answer">
+				<script>document.write(emptyTriangle2_answer(3,'+','-'));</script>
+			</div>
+			<input type="range" id="emptyTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle2Range','','emptyTriangle2Drawing','emptyTriangle2Drawing_answer',emptyTriangle2,emptyTriangle2_answer,'+','-');">
 		</div>
 		<div class="example-container">
 			Triangle rectangle centré vide :
 			<div class="drawing" id="emptyTriangle3Drawing">
 				<script>document.write(fullTriangle3(3,'+','-'));</script>
 			</div>
-			<input type="range" id="emptyTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle3Range','','emptyTriangle3Drawing',emptyTriangle3,'+','-');">
+			<div class="drawing_answer" id="emptyTriangle3Drawing_answer">
+				<script>document.write(fullTriangle3_answer(3,'+','-'));</script>
+			</div>
+			<input type="range" id="emptyTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle3Range','','emptyTriangle3Drawing','emptyTriangle3Drawing_answer',emptyTriangle3,emptyTriangle3_answer,'+','-');">
 		</div>
 	</div>
 </div>
