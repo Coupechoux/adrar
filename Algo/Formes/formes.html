@@ -2,15 +2,26 @@
 <html>
 	<head>
 		<style>
-			.flex-container {
+			.shapes-container {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.examples-container {
 				display: flex;
 				align-items: center;
 			}
-			.dessin {
+			.shape {
+				margin: 3px;
+				padding: 3px;
+				display: flex;
+				flex-direction: column;
+				border: solid 3px black;
+			}
+			.drawing {
 				font-family: monospace;
 				margin: 2px;
 				padding: 2px;
-				border: 1px solid black;
+				border: dotted 1px black;
 			}
 		</style>
 		<script type = "text/javascript" src = "formes.js" ></script>
@@ -18,72 +29,78 @@
 <body>
 
 <h1>Formes</h1>
+<div class="shapes-container">
+	<div class="shape" name="Lignes">
+		<h2>Lignes</h2>
+		<div class="examples-container">
+			Lignes pleines :
+			<div class="drawing"><script>document.write(fullLine(5,'+'));</script></div>
+			<div class="drawing"><script>document.write(fullLine(27,'+'));</script></div>
+		</div>
+		<div class="examples-container">
+			Lignes vides :
+			<div class="drawing"><script>document.write(emptyLine(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyLine(2,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyLine(8,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyLine(30,'+','&nbsp;'));</script></div>
+		</div>
+	</div>
+	<div class="shape" name="Rectangles">
+		<h2>Rectangles</h2>
+		<div class="examples-container">
+			Rectangles pleins :
+			<div class="drawing"><script>document.write(fullRectangle(4,2,'+'));</script></div>
+			<div class="drawing"><script>document.write(fullRectangle(3,1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(fullRectangle(30,4,'+'));</script></div>
+		</div>
+		<div class="examples-container">
+			Rectangles vides :
+			<div class="drawing"><script>document.write(emptyRectangle(4,2,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyRectangle(3,1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyRectangle(30,4,'+','&nbsp;'));</script></div>
+		</div>
+	</div>
 
-<h2>Lignes</h2>
-<div class="flex-container">
-	Lignes pleines :
-	<div class="dessin"><script>document.write(fullLine(5,'+'));</script></div>
-	<div class="dessin"><script>document.write(fullLine(27,'+'));</script></div>
-</div>
+	<div class="shape" name="Triangles">
+		<h2>Triangles</h2>
+		<div class="examples-container">
+			Triangles rectangles à gauche pleins :
+			<div class="drawing"><script>document.write(fullTriangle1(1,'+'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle1(3,'+'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle1(5,'+'));</script></div>
+		</div>
+		<div class="examples-container">
+			Triangles rectangles à droite pleins :
+			<div class="drawing"><script>document.write(fullTriangle2(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle2(3,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle2(5,'+','&nbsp;'));</script></div>
+		</div>
+		<div class="examples-container">
+			Triangles rectangles centrés pleins :
+			<div class="drawing"><script>document.write(fullTriangle3(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle3(3,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(fullTriangle3(5,'+','&nbsp;'));</script></div>
+		</div>
+		<div class="examples-container">
 
-<div class="flex-container">
-	Lignes vides :
-	<div class="dessin"><script>document.write(emptyLine(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyLine(2,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyLine(8,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyLine(27,'+','&nbsp;'));</script></div>
-</div>
-
-<h2>Rectangles</h2>
-<div class="flex-container">
-	Rectangles pleins :
-	<div class="dessin"><script>document.write(fullRectangle(4,2,'+'));</script></div>
-	<div class="dessin"><script>document.write(fullRectangle(80,5,'+'));</script></div>
-</div>
-<div class="flex-container">
-	Rectangles vides :
-	<div class="dessin"><script>document.write(emptyRectangle(4,2,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyRectangle(3,1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyRectangle(80,5,'+','&nbsp;'));</script></div>
-</div>
-
-<h2>Triangles</h2>
-<div class="flex-container">
-	Triangles rectangles gauche pleins :
-	<div class="dessin"><script>document.write(fullTriangle1(1,'+'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle1(4,'+'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle1(10,'+'));</script></div>
-</div>
-<div class="flex-container">
-	Triangles rectangles droite pleins :
-	<div class="dessin"><script>document.write(fullTriangle2(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle2(4,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle2(10,'+','&nbsp;'));</script></div>
-</div>
-<div class="flex-container">
-	Triangles rectangles centrés pleins :
-	<div class="dessin"><script>document.write(fullTriangle3(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle3(4,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(fullTriangle3(10,'+','&nbsp;'));</script></div>
-</div>
-<div class="flex-container">
-
-	Triangles rectangles gauche vides :
-	<div class="dessin"><script>document.write(emptyTriangle1(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle1(4,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle1(10,'+','&nbsp;'));</script></div>
-</div>
-<div class="flex-container">
-	Triangles rectangles droite vides :
-	<div class="dessin"><script>document.write(emptyTriangle2(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle2(4,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle2(10,'+','&nbsp;'));</script></div>
-</div>
-<div class="flex-container">
-	Triangles rectangles centrés vides :
-	<div class="dessin"><script>document.write(emptyTriangle3(1,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle3(4,'+','&nbsp;'));</script></div>
-	<div class="dessin"><script>document.write(emptyTriangle3(10,'+','&nbsp;'));</script></div>
+			Triangles rectangles à gauche vides :
+			<div class="drawing"><script>document.write(emptyTriangle1(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle1(3,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle1(5,'+','&nbsp;'));</script></div>
+		</div>
+		<div class="examples-container">
+			Triangles rectangles à droite vides :
+			<div class="drawing"><script>document.write(emptyTriangle2(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle2(3,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle2(5,'+','&nbsp;'));</script></div>
+		</div>
+		<div class="examples-container">
+			Triangles rectangles centrés vides :
+			<div class="drawing"><script>document.write(emptyTriangle3(1,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle3(3,'+','&nbsp;'));</script></div>
+			<div class="drawing"><script>document.write(emptyTriangle3(5,'+','&nbsp;'));</script></div>
+		</div>
+	</div>
 </div>
 
 </body>
