@@ -1,0 +1,74 @@
+function pikachu(a,b)
+-> a*b
+
+function tableur(a,b)
+-> (a+1)*b
+
+function lol(a,b)
+-> 2*a*b
+
+function wolverine(a,b)
+-> a*b
+
+function bob(a,b,c)
+-> a*b*c
+
+function plafond(a,b)
+-> si (a>0) alors b
+   sinon 0
+
+function ventilateur(a,b)
+-> 0
+
+function calcul(a)
+-> a! = a * (a-1) * (a-2) * (a-3) * ... * 1
+   "factorielle a"
+
+function python(a)
+-> a! = a * (a-1) * (a-2) * (a-3) * ... * 1
+   "factorielle a"
+
+function erogahtyp(a)
+-> si (a est pair) alors a/2
+   sinon 3*a+1
+   "suite de Syracuse"
+
+function pythagore(a,b)
+-> répétition de b fois la fonction précédente
+   "suite de Syracuse"
+
+function aceeilnrtt(a)
+-> combien d'itérations nécessaires pour atteindre 1
+   dans la suite de Syracuse en partant de a
+
+function micmath(a,b)
+-> plus grand n tel que b^n = b*b*b*b*...(n fois) <= a
+   "logarithme en base b"
+
+function stylo(a,b)
+-> a^b = a*a*a*...(b fois)
+   "a puissance b"
+
+function crayon(a,b)
+-> 0
+
+function minecraft(a)
+-> a^a = a*a*a*...(a fois)
+   "a puissance a"
+   
+function nenio(a)
+-> 0
+
+function carapuce_samourai(a)
+-> si (a est pair) alors 1
+   sinon 0
+
+function bouteille_d_eau(a)
+-> si (a<0) alors 0
+   sinon si (a>0) alors -1
+   sinon 1
+
+function spiderman(a)
+-> si (a multiple de 3) alors 1
+   sinon si (a multiple de 3 +1) alors -1
+   sinon 0
