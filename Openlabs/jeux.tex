@@ -1,0 +1,153 @@
+\documentclass{beamer}
+\usetheme{warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning,shapes.misc}
+
+\title{Les solutions !}
+\date{6 février 2019}
+\author{Pierre Coupechoux}
+
+\begin{document}
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tablette de chocolat}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[fill=brown] (0,0) rectangle (5,3);
+			\draw[color=black] (0,0) grid (5,3);
+		\end{tikzpicture}
+	\end{center}
+	\begin{itemize}
+		\item Au début : un seul morceau.
+		\item À la fin : $n*m$ morceaux.
+		\item Une action : un nouveau morceau.
+	\end{itemize}
+	\begin{block}{Résultat}
+		Fin après $n*m-1$ actions.
+	\end{block}
+\end{frame}
+\begin{frame}
+	\frametitle{Tablette de chocolat -- la même chose}
+	\begin{block}{Théorème}
+		Une partie du jeu {\sc TabletteDeChocolat} sur une tablette de largeur $n$ et de hauteur $m$ se termine en $n*m-1$ tours.
+	\end{block}
+	\begin{proof}
+		{\sc TabletteDeChocolat} peut se généraliser comme un jeu combinatoire impartial sur un le graphe $G_{n,m}$. Un joueur peut à son tour choisir un ensemble de sommets connexe non maximal et enlever toutes les arêtes de la coupe associée. Le nombre de composantes connexes augmente de $1$ à chaque tour.
+	Initialement, il y a $1$ composante connexe. La partie se termine quand il n'y a plus d'arête, c'est-à-dire quand il y a $n*m$ composantes connexes.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Énigme des cavaliers}
+	\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) rectangle (3,3);
+		\draw[fill=black] (0,0) rectangle (1,1);
+		\draw[fill=black] (2,0) rectangle (3,1);
+		\draw[fill=black] (1,1) rectangle (2,2);
+		\draw[fill=black] (0,2) rectangle (1,3);
+		\draw[fill=black] (2,2) rectangle (3,3);
+		
+		\draw[ultra thick,color=green] (0.5,0.5) circle (0.3);
+		\draw[ultra thick,color=green] (2.5,0.5) circle (0.3);
+		\draw[ultra thick,color=blue] (0.5,2.5) circle (0.3);
+		\draw[ultra thick,color=blue] (2.5,2.5) circle (0.3);
+	\end{tikzpicture}
+	\end{center}
+	
+	\pause
+	
+	\begin{block}{Résultat}
+		On a réussi en 16 déplacements.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Énigme des cavaliers}
+	\begin{block}{Homéomorphisme}
+		Le plateau de jeu est homéomorphe à $\mathcal{C}_8\cup\mathcal{C}_1$.
+	\end{block}
+	\begin{block}{Théorème}
+		Le problème se résout en $16$ mouvements.
+	\end{block}
+	\begin{proof}
+		Les cavaliers sont contraints de se déplacer dans le même sens. Le jeu se passe donc sur le cycle $\mathcal{C}_8$ orienté. Le nombre de mouvements à effectuer est alors simplement la somme des distances entre les positions de départ et d'arrivée, soit $d(1,9)+d(3,7)+d(7,3)+d(9,1)$. Par symétrie, toutes ces distances sont égales, donc l'énigme se résout en $4*d(1,9)=16$~mouvements.
+	\end{proof}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Jeu des croix}
+	\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\onslide<10->{\node[ultra thick,cross out,draw,red,rotate=45] (A) at (0,4) {};}
+		\onslide<9->{\node[ultra thick,cross out,draw,red,rotate=0] (B) at (0,2) {};}
+		\node[ultra thick,cross out,draw,red,rotate=45] (C) at (1,5) {};
+		\onslide<4->{\node[ultra thick,cross out,draw,red,rotate=0] (D) at (3,8) {};}
+		\onslide<8->{\node[ultra thick,cross out,draw,red,rotate=90] (E) at (3,6) {};}
+		\node[ultra thick,cross out,draw,red,rotate=45] (F) at (6,6) {};
+		\onslide<5->{\node[ultra thick,cross out,draw,red,rotate=0] (G) at (7,5) {};}
+		\onslide<3->{\node[ultra thick,cross out,draw,red,rotate=0] (H) at (4,5) {};}
+		\onslide<2->{\node[ultra thick,cross out,draw,red,rotate=90] (I) at (3,4) {};}
+		\onslide<6->{\node[ultra thick,cross out,draw,red,rotate=45] (J) at (7,4) {};}
+		\onslide<7->{\node[ultra thick,cross out,draw,red,rotate=0] (K) at (6,2) {};}
+		\onslide<14->{\node[ultra thick,cross out,draw,red,rotate=0] (L) at (5,0) {};}
+		\onslide<11->{\node[ultra thick,cross out,draw,red,rotate=0] (M) at (1.5,0.5) {};}
+		\onslide<12->{\node[ultra thick,cross out,draw,red,rotate=45] (N) at (2,3) {};}
+		\onslide<13->{\node[ultra thick,cross out,draw,red,rotate=45] (O) at (3,2) {};}
+		\node[ultra thick,cross out,draw,red,rotate=45] (P) at (4.5,2) {};
+		
+		\onslide<10->{\draw (A.south west) to[out=-90,in=45] (B.north east);}
+		\onslide<10->{\draw (A.north east) to[out=90,in=180] (C.north west);}
+		\onslide<9->{\draw (B.south east) to[out=-45,in=-90] (C.south west);}
+		\onslide<9->{\draw (B.north west) to[out=135,in=135] (D.north west);}
+		\onslide<11->{\draw (B.south west) to[out=-135,in=135] (M.north west);}
+		\onslide<4->{\draw (C.north east) to[out=90,in=-135] (D.south west);}
+		\onslide<2->{\draw (C.south east) to[out=0,in=135] (I.north east);}
+		\onslide<8->{\draw (D.south east) to[out=-45,in=135] (E.north east);}
+		\onslide<4->{\draw (D.north east) to[out=45,in=90] (F.north east);}
+		\onslide<8->{\draw (E.south west) to[out=-45,in=135] (H.north west);}
+		\onslide<5->{\draw (F.south east) to[out=0,in=45] (G.north east);}
+		\onslide<5->{\draw (F.south west) to[out=-90,in=-135] (G.south west);}
+		\onslide<3->{\draw (F.north west) to[out=180,in=45] (H.north east);}
+		\onslide<6->{\draw (G.south east) to[out=-45,in=0] (J.south east);}
+		\onslide<3->{\draw (H.south west) to[out=-135,in=45] (I.south east);}
+		\onslide<6->{\draw (H.south east) to[out=-45,in=180] (J.north west);}
+		\onslide<12->{\draw (I.north west) to[out=-135,in=90] (N.north east);}
+		\onslide<2->{\draw (I.south west) to[out=-45,in=90] (P.north east);}
+		\onslide<7->{\draw (J.south west) to[out=-90,in=-45] (K.south east);}
+		\onslide<7->{\draw (K.north west) to[out=135,in=0] (P.south east);}
+		\onslide<14->{\draw (K.south west) to[out=-135,in=45] (L.north east);}
+		\onslide<14->{\draw (L.south west) to[out=-135,in=-135] (M.south west);}
+		\onslide<12->{\draw (M.north east) to[out=45,in=-90] (N.south west);}
+		\onslide<11->{\draw (M.south east) to[out=-45,in=-90] (P.south west);}
+		\onslide<13->{\draw (N.south east) to[out=0,in=180] (O.north west);}
+		\onslide<13->{\draw (O.south east) to[out=180,in=0] (P.north west);}
+	\end{tikzpicture}	
+	\end{center}
+	
+	\onslide<15->{\begin{block}{Résultat}
+		On constate que le nombre de coups joués ne dépend pas des choix.
+	\end{block}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hackenbush}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Cops and Robber}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Firefighter}
+\end{frame}
+
+
+
+\end{document}

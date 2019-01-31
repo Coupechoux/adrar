@@ -8,7 +8,7 @@ maxiter = 100;
 function setup()
 {
 	// createCanvas(windowWidth,windowHeight);
-	createCanvas(300,200);
+	createCanvas(600,400);
 	setYRange();
 	pixelDensity(10);
 	noLoop();

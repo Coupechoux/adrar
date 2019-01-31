@@ -1,5 +1,10 @@
 ﻿*~
 p5/empty-example/
 *.aux
+*.dvi
+*.nav
+*.out
+*.snm
+*.toc
 *.log
 *.synctex.gz

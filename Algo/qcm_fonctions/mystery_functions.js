@@ -73,7 +73,7 @@ function python(a) {
 	if(a<2) {
 		result = 1;
 	} else {
-		result = a*calcul(a-1);
+		result = a*python(a-1);
 	}
 	return result;
 }
