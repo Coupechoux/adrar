@@ -29,9 +29,8 @@ def search_v1(value,array):
 def search_v2(value,array):
 	pass
 	
-	
-def search_v3(value,array):
-	pass
+# def search_v3(value,array):
+	# pass
 	
 def search_in_ordered_v1(value,array):
 	pass
