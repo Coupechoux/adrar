@@ -1,6 +1,7 @@
 // Retourne une ligne de taille w, avec le caractère c
 // Avec un <br/> à la fin
 // Exemple : "*******<br/>"
+
 function fullLine(w,c)
 {
 	var s = "";
