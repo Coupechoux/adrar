@@ -8,3 +8,4 @@ p5/empty-example/
 *.toc
 *.log
 *.synctex.gz
+__pycache__/
