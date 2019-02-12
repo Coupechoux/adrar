@@ -1,6 +1,6 @@
 var nodes = [];
-var N = 15;
-var pix_size = 600;
+var N = 41;
+var pix_size = 800;
 var button_validate;
 var availableFirefightersTextArea;
 var scoreTextArea;
@@ -34,6 +34,7 @@ function setup() {
 	availableFirefightersTextArea=createElement('h3',"");
 	scoreTextArea=createElement('h3',"");
 	setAvailableFirefightersText();
+	//nodes[int(N*N/2+N/2)].burn();
 	nodes[int(nodes.length/2)].burn();
 }
 
@@ -97,6 +98,12 @@ function newTurn()
 			}
 		}
 		setScoreText(totalBurned)
+	}
+}
+
+function keyPressed() {
+	if (keyCode === ENTER) {
+		newTurn();
 	}
 }
 

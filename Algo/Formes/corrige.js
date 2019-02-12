@@ -1,3 +1,4 @@
+
 function fullLine_answer(w,c)
 {
 	var s = "";
@@ -134,5 +135,71 @@ function emptyTriangle3_answer(h,c1,c2)
 		nbC1 += 2;
 	}
 	s += fullLine_answer(nbC1,c1);
+	return s;
+}
+
+function pacman_answer(h,c1) {
+	var s = "";
+	var nbC1 = h;
+	var nbC2 = 0;
+	if(nbC1%2 == 0) {
+		nbC1--;
+	}
+	
+	for(var i=0; i<Math.floor(h/2); i++) {
+		for(var j=0; j<nbC2; j++) {
+			s += c2;
+		}
+		s += fullLine_answer(nbC1,c1);
+		nbC1 -= 2;
+		nbC2++;
+	}
+	
+	nbC1 = 1;
+	if(h%2==0) {
+		nbC2--;
+	}
+	for(var i=0; i<h/2; i++) {
+		for(var j=0; j<nbC2; j++) {
+			s += c2;
+		}
+		s += fullLine_answer(nbC1,c1);
+		nbC1 += 2;
+		nbC2--;
+	}
+	
+	return s;
+}
+
+function hourglass_answer(h,c1,c2) {
+	var s = "";
+	var nbC1 = h;
+	var nbC2 = 0;
+	if(nbC1%2 == 0) {
+		nbC1--;
+	}
+	
+	for(var i=0; i<Math.floor(h/2); i++) {
+		for(var j=0; j<nbC2; j++) {
+			s += c2;
+		}
+		s += fullLine_answer(nbC1,c1);
+		nbC1 -= 2;
+		nbC2++;
+	}
+	
+	nbC1 = 1;
+	if(h%2==0) {
+		nbC2--;
+	}
+	for(var i=0; i<h/2; i++) {
+		for(var j=0; j<nbC2; j++) {
+			s += c2;
+		}
+		s += fullLine_answer(nbC1,c1);
+		nbC1 += 2;
+		nbC2--;
+	}
+	
 	return s;
 }

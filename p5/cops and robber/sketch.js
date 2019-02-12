@@ -142,26 +142,15 @@ function chooseCopPosition() {
 }
 
 function chooseRobberPosition() {
-	infoTextArea.elt.innerHTML = "Le voleur choisit sa position...";
-	
-	if(N%2 == 1) {
-		if(posCop.x == 0 && posCop.y == 0) {
-			posRobber.set([N-1,0]);
-		} else if(posCop.x == N-1 && posCop.y == 0) {
-			posRobber.set([0,0]);
-		} else if(posCop.x>N/2) {
-			posRobber.set([N-posCop.x,1-posCop.y]);
-		} else {
-			posRobber.set([N-2-posCop.x,1-posCop.y]);
-		}
-	} else {
-		posRobber.x = N-1-posCop.x;
-		posRobber.y = 1-posCop.y;
+	infoTextArea.elt.innerHTML = "Choisissez la position du voleur";
+	if(lastClick.x >= 0) {
+		posRobber.x = lastClick.x;
+		posRobber.y = lastClick.y;
+		
+		gameState = "copMove";
+		lastClick.x = -1;
+		lastClick.y = -1;
 	}
-
-	gameState = "copMove";
-	lastClick.x = -1;
-	lastClick.y = -1;
 }
 
 function possibleMove(x1,y1,x2,y2) {

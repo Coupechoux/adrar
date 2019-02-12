@@ -53,6 +53,30 @@
 					drawing_answer.innerHTML = fun_answer(range1.value,range2.value,c1,c2);
 				}
 			}
+			// 1 dimension, 1 character
+			function addShape11(nameEN, nameFR) {
+				var s = '%3Cdiv%20class%3D%22example-container%22%3E%0A'+nameFR+'%20%3A%0A%3Cdiv%20class%3D%22drawing%22%20id%3D%22'+nameEN+'Drawing%22%3E%0A%09%3Cscript%3Edocument.write('+nameEN+'(3%2C%27%2B%27))%3B%3C%2Fscript%3E%0A%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22drawing_answer%22%20id%3D%22'+nameEN+'Drawing_answer%22%3E%0A%09%3Cscript%3Edocument.write('+nameEN+'_answer(3%2C%27%2B%27))%3B%3C%2Fscript%3E%0A%3C%2Fdiv%3E%0A%3Cinput%20type%3D%22range%22%20id%3D%22'+nameEN+'Range%22%20min%3D%221%22%20max%3D%2220%22%20value%3D%223%22%20onchange%3D%22updateDrawing(%27'+nameEN+'Range%27%2C%27%27%2C%27'+nameEN+'Drawing%27%2C%27'+nameEN+'Drawing_answer%27%2C'+nameEN+'%2C'+nameEN+'_answer%2C%27%2B%27%2C%27-%27)%3B%22%3E%0A%3C%2Fdiv%3E';
+				alert(unescape(s));
+				document.write(unescape(s));
+			}
+			// 1 dimension, 2 characters
+			function addShape12(nameEN, nameFR) {
+				var s = '%3Cdiv%20class%3D%22example-container%22%3E%0A'+nameFR+'%20%3A%0A%3Cdiv%20class%3D%22drawing%22%20id%3D%22'+nameEN+'Drawing%22%3E%0A%09%3Cscript%3Edocument.write('+nameEN+'(3%2C%27%2B%27%2C%27-%27))%3B%3C%2Fscript%3E%0A%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22drawing_answer%22%20id%3D%22'+nameEN+'Drawing_answer%22%3E%0A%09%3Cscript%3Edocument.write('+nameEN+'_answer(3%2C%27%2B%27%2C%27-%27))%3B%3C%2Fscript%3E%0A%3C%2Fdiv%3E%0A%3Cinput%20type%3D%22range%22%20id%3D%22'+nameEN+'Range%22%20min%3D%221%22%20max%3D%2220%22%20value%3D%223%22%20onchange%3D%22updateDrawing(%27'+nameEN+'Range%27%2C%27%27%2C%27'+nameEN+'Drawing%27%2C%27'+nameEN+'Drawing_answer%27%2C'+nameEN+'%2C'+nameEN+'_answer%2C%27%2B%27%2C%27-%27)%3B%22%3E%0A%3C%2Fdiv%3E';
+				alert(unescape(s));
+				document.write(unescape(s));
+			}
+			// 2 dimensions, 1 character
+			function addShape21(nameEN, nameFR) {
+				var s = '%3Cdiv class=%22example-container%22%3E'+nameFR+' :%3Cdiv class=%22drawing%22 id=%22'+nameEN+'Drawing%22%3E%3Cscript%3Edocument.write%28'+nameEN+'%284,2,%27+%27%29%29%3B%3C/script%3E%3C/div%3E%3Cdiv class=%22drawing_answer%22 id=%22'+nameEN+'Drawing_answer%22%3E%3Cscript%3Edocument.write%28'+nameEN+'_answer%284,2,%27+%27%29%29%3B%3C/script%3E%3C/div%3E%3Cinput type=%22range%22 id=%22'+nameEN+'RangeWidth%22 min=%221%22 max=%2220%22 value=%224%22 onchange=%22updateDrawing%28%27'+nameEN+'RangeWidth%27,%27'+nameEN+'RangeHeight%27,%27'+nameEN+'Drawing%27,%27'+nameEN+'Drawing_answer%27,'+nameEN+','+nameEN+'_answer,%27+%27,%27-%27%29%3B%22%3E%3Cinput type=%22range%22 id=%22'+nameEN+'RangeHeight%22 min=%221%22 max=%2220%22 value=%222%22 onchange=%22updateDrawing%28%27'+nameEN+'RangeWidth%27,%27'+nameEN+'RangeHeight%27,%27'+nameEN+'Drawing%27,%27'+nameEN+'Drawing_answer%27,'+nameEN+','+nameEN+'_answer,%27+%27,%27-%27%29%3B%22%3E%3C/div%3E';
+				alert(unescape(s));
+				document.write(unescape(s));
+			}
+			// 2 dimensions, 2 character
+			function addShape22(nameEN, nameFR) {
+				var s = '%3Cdiv class=%22example-container%22%3E'+nameFR+' :%3Cdiv class=%22drawing%22 id=%22'+nameEN+'Drawing%22%3E%3Cscript%3Edocument.write%28'+nameEN+'%284,2,%27+%27%29%29%3B%3C/script%3E%3C/div%3E%3Cdiv class=%22drawing_answer%22 id=%22'+nameEN+'Drawing_answer%22%3E%3Cscript%3Edocument.write%28'+nameEN+'_answer%284%2C2%2C%27%2B%27%2C%27-%27%29%29%3B%3C/script%3E%3C/div%3E%3Cinput type=%22range%22 id=%22'+nameEN+'RangeWidth%22 min=%221%22 max=%2220%22 value=%224%22 onchange=%22updateDrawing%28%27'+nameEN+'RangeWidth%27,%27'+nameEN+'RangeHeight%27,%27'+nameEN+'Drawing%27,%27'+nameEN+'Drawing_answer%27,'+nameEN+','+nameEN+'_answer,%27+%27,%27-%27%29%3B%22%3E%3Cinput type=%22range%22 id=%22'+nameEN+'RangeHeight%22 min=%221%22 max=%2220%22 value=%222%22 onchange=%22updateDrawing%28%27'+nameEN+'RangeWidth%27,%27'+nameEN+'RangeHeight%27,%27'+nameEN+'Drawing%27,%27'+nameEN+'Drawing_answer%27,'+nameEN+','+nameEN+'_answer,%27+%27,%27-%27%29%3B%22%3E%3C/div%3E';
+				alert(unescape(s));
+				document.write(unescape(s));
+			}
 		</script>
 	</head>
 <body>
@@ -63,117 +87,28 @@
 <div class="shapes-container">
 	<div class="shape" name="Lignes">
 		<h2>Lignes</h2>
-		<div class="example-container">
-			Ligne pleine :
-			<div class="drawing" id="fullLineDrawing">
-				<script>document.write(fullLine(3,'+'));</script>
-			</div>
-			<div class="drawing_answer" id="fullLineDrawing_answer">
-				<script>document.write(fullLine_answer(3,'+'));</script>
-			</div>
-			<input type="range" id="fullLineRange" min="1" max="20" value="3" onchange="updateDrawing('fullLineRange','','fullLineDrawing','fullLineDrawing_answer',fullLine,fullLine_answer,'+','-');">
-		</div>
-		<div class="example-container">
-			Ligne vide :
-			<div class="drawing" id="emptyLineDrawing">
-				<script>document.write(emptyLine(3,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="emptyLineDrawing_answer">
-				<script>document.write(emptyLine_answer(3,'+','-'));</script>
-			</div>
-			<input type="range" id="emptyLineRange" min="1" max="20" value="3" onchange="updateDrawing('emptyLineRange','','emptyLineDrawing','emptyLineDrawing_answer',emptyLine,emptyLine_answer,'+','-');">
-		</div>
+		<script>addShape11('fullLine','Ligne pleine');</script>
+		<script>addShape12('emptyLine','Ligne vide');</script>
 	</div>
 	<div class="shape" name="Rectangles">
 		<h2>Rectangles</h2>
-		<div class="example-container">
-			Rectangle plein :
-			<div class="drawing" id="fullRectangleDrawing">
-				<script>document.write(fullRectangle(4,2,'+'));</script>
-			</div>
-			<div class="drawing_answer" id="fullRectangleDrawing_answer">
-				<script>document.write(fullRectangle_answer(4,2,'+'));</script>
-			</div>
-			<input type="range" id="fullRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing','fullRectangleDrawing_answer',fullRectangle,fullRectangle_answer,'+','-');">
-			<input type="range" id="fullRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('fullRectangleRangeWidth','fullRectangleRangeHeight','fullRectangleDrawing','fullRectangleDrawing_answer',fullRectangle,fullRectangle_answer,'+','-');">
-		</div>
-		<div class="example-container">
-			Rectangle vide :
-			<div class="drawing" id="emptyRectangleDrawing">
-				<script>document.write(emptyRectangle(4,2,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="emptyRectangleDrawing_answer">
-				<script>document.write(emptyRectangle_answer(4,2,'+','-'));</script>
-			</div>
-			<input type="range" id="emptyRectangleRangeWidth" min="1" max="20" value="4" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing','emptyRectangleDrawing_answer',emptyRectangle,emptyRectangle_answer,'+','-');">
-			<input type="range" id="emptyRectangleRangeHeight" min="1" max="20" value="2" onchange="updateDrawing('emptyRectangleRangeWidth','emptyRectangleRangeHeight','emptyRectangleDrawing','emptyRectangleDrawing_answer',emptyRectangle,emptyRectangle_answer,'+','-');">
-		</div>
+		<script>addShape21('fullRectangle','Rectangle plein');</script>
+		<script>addShape22('emptyRectangle','Rectangle vide');</script>
 	</div>
 
 	<div class="shape" name="Triangles">
 		<h2>Triangles</h2>
-		<div class="example-container">
-			Triangle rectangle à gauche plein :
-			<div class="drawing" id="fullTriangle1Drawing">
-				<script>document.write(fullTriangle1(3,'+'));</script>
-			</div>
-			<div class="drawing_answer" id="fullTriangle1Drawing_answer">
-				<script>document.write(fullTriangle1_answer(3,'+'));</script>
-			</div>
-			<input type="range" id="fullTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle1Range','','fullTriangle1Drawing','fullTriangle1Drawing_answer',fullTriangle1,fullTriangle1_answer,'+','-');">
-		</div>
-		
-		<div class="example-container">
-			Triangle rectangle à droite plein :
-			<div class="drawing" id="fullTriangle2Drawing">
-				<script>document.write(fullTriangle2(3,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="fullTriangle2Drawing_answer">
-				<script>document.write(fullTriangle2_answer(3,'+','-'));</script>
-			</div>
-			<input type="range" id="fullTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle2Range','','fullTriangle2Drawing','fullTriangle2Drawing_answer',fullTriangle2,fullTriangle2_answer,'+','-');">
-		</div>
-		<div class="example-container">
-			Triangle rectangle centré plein :
-			<div class="drawing" id="fullTriangle3Drawing">
-				<script>document.write(fullTriangle3(3,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="fullTriangle3Drawing_answer">
-				<script>document.write(fullTriangle3_answer(3,'+','-'));</script>
-			</div>
-			<input type="range" id="fullTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('fullTriangle3Range','','fullTriangle3Drawing','fullTriangle3Drawing_answer',fullTriangle3,fullTriangle3_answer,'+','-');">
-		</div>
-		
-		<div class="example-container">
-			Triangle rectangle à gauche vide :
-			<div class="drawing" id="emptyTriangle1Drawing">
-				<script>document.write(emptyTriangle1(3,'+'));</script>
-			</div>
-			<div class="drawing_answer" id="emptyTriangle1Drawing_answer">
-				<script>document.write(emptyTriangle1_answer(3,'+'));</script>
-			</div>
-			<input type="range" id="emptyTriangle1Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle1Range','','emptyTriangle1Drawing','emptyTriangle1Drawing_answer',emptyTriangle1,emptyTriangle1_answer,'+','-');">
-		</div>
-		<div class="example-container">
-			Triangle rectangle à droite vide :
-			<div class="drawing" id="emptyTriangle2Drawing">
-				<script>document.write(emptyTriangle2(3,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="emptyTriangle2Drawing_answer">
-				<script>document.write(emptyTriangle2_answer(3,'+','-'));</script>
-			</div>
-			<input type="range" id="emptyTriangle2Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle2Range','','emptyTriangle2Drawing','emptyTriangle2Drawing_answer',emptyTriangle2,emptyTriangle2_answer,'+','-');">
-		</div>
-		<div class="example-container">
-			Triangle rectangle centré vide :
-			<div class="drawing" id="emptyTriangle3Drawing">
-				<script>document.write(fullTriangle3(3,'+','-'));</script>
-			</div>
-			<div class="drawing_answer" id="emptyTriangle3Drawing_answer">
-				<script>document.write(fullTriangle3_answer(3,'+','-'));</script>
-			</div>
-			<input type="range" id="emptyTriangle3Range" min="1" max="20" value="3" onchange="updateDrawing('emptyTriangle3Range','','emptyTriangle3Drawing','emptyTriangle3Drawing_answer',emptyTriangle3,emptyTriangle3_answer,'+','-');">
-		</div>
+		<script>addShape11('fullTriangle1','Triangle rectangle à gauche plein');</script>
+		<script>addShape12('fullTriangle2','Triangle rectangle à droite plein');</script>
+		<script>addShape12('fullTriangle3','Triangle centré plein');</script>
+		<script>addShape12('emptyTriangle1','Triangle rectangle à gauche vide');</script>
+		<script>addShape12('emptyTriangle2','Triangle rectangle à droite vide');</script>
+		<script>addShape12('emptyTriangle3','Triangle centré vide');</script>
+	</div>
+	
+	<div class="shape" name="Autres">
+		<h2>Autres</h2>
+		<script>addShape12('hourglass','Sablier');</script>
 	</div>
 </div>
 

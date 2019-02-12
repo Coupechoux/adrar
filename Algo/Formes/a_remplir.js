@@ -117,3 +117,9 @@ function emptyTriangle3(h,c1,c2)
 	
 	return s;
 }
+
+function hourglass(h,c1,c2) {
+	var s = "";
+	
+	return s;
+}
