@@ -243,4 +243,93 @@ function fois_answer(w,c1,c2) {
 	}
 	return s;
 }
+
+function snake1_answer(w,c1,c2) {
+	let s = "";
+	for(let i=0; i<w; i++) {
+		console.log(i);
+		if(i%2==0) {
+			s += fullLine_answer(w,c1);
+		}
+		else if(i%4==1) {
+			for(let j=0; j<w-1; j++) {
+				s += c2;
+			}
+			s += c1 + "<br/>";
+		}
+		else {
+			s += c1;
+			s += fullLine_answer(w-1,c2);
+		}
+	}
+	return s;
+}
+
+function snake2_answer(w,c1,c2) {
+	let s = "";
+	for(let j=0; j<w; j++) {
+		if(j%4 == 1) {
+			s += c2;
+		} else {
+			s += c1;
+		}
+	}
+	s += "<br/>";
+	
+	for(let i=0; i<w-2; i++) {
+		for(let j=0; j<w; j++) {
+			if(j%2==0) {
+				s += c1;
+			} else {
+				s += c2;
+			}
+		}
+		s += "<br/>";
+	}
+	
+	if(w > 1) {
+		for(let j=0; j<w; j++) {
+			if(j%4 == 3) {
+				s += c2;
+			} else {
+				s += c1;
+			}
+		}
+	}
+	
+	return s;
+}
+
+function checkerboard_answer(w,c1,c2) {
+	let s = "";
+	for(let i=0; i<w; i++) {
+		for(let j=0; j<w; j++) {
+			s += (i+j)%2==0?c1:c2;
+		}
+		s += "<br/>";
+	}
+	return s;
+}
+
+function diagonal1_answer(w,c1,c2) {
+	let s = "";
+	for(let i=0; i<w; i++) {
+		for(let j=0; j<w; j++) {
+			s += (i+j)%4==0?c1:c2;
+		}
+		s += "<br/>";
+	}
+	return s;
+}
+
+function diagonal2_answer(w,c1,c2) {
+	let s = "";
+	for(let i=0; i<w; i++) {
+		for(let j=0; j<w; j++) {
+			s += (i-j)%4==0?c1:c2;
+		}
+		s += "<br/>";
+	}
+	return s;
+}
 	

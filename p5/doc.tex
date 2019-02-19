@@ -1,0 +1,53 @@
+\documentclass{scrartcl}
+
+\usepackage[top=1cm,bottom=1cm]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\title{p5}
+\subtitle{Mini doc incomplète et non exhaustive}
+\date{}
+\begin{document}
+	\maketitle{}
+
+	\href{https://p5js.org/reference/}{$\rightarrow$ La documentation officielle $\leftarrow$}
+	
+	\section*{Les fonctions}
+		\begin{itemize}
+			\item $setup()$ : cette fonction est appelée automatiquement au démarrage.
+			\item $draw()$ : cette fonction est appelée en automatiquement, en boucle.
+			\item $createCanvas(w,h)$ : crée la zone de dessin.
+		\end{itemize}
+	\section*{Les évènements}
+		\begin{itemize}
+			\item $mouseClicked()$ : appelée lors d'un clic de souris.
+			\item $keyPressed()$ : appelée lors de l'appui sur une touche du clavier.
+		\end{itemize}
+		
+	\section*{Les variables globales}
+		\begin{itemize}
+			\item $mouseX$, $mouseY$ : coordonnées de la souris.
+			\item $width$, $height$ : taille de la zone de dessin.
+		\end{itemize}
+	\section*{Le dessin}
+		\begin{itemize}
+			\item $color(r,g,b)$ : couleur déterminée par des niveaux de rouge, vert, bleu.
+			\item $stroke()$ : choisit avec quel couleur dessiner.
+			\begin{itemize}
+				\item $stroke(gris)$ : 1 nombre $\rightarrow$ niveau de gris.
+				\item $stroke(gris,alpha)$ : 2 nombres $\rightarrow$ niveau de gris + transparence.
+				\item $stroke(couleur)$ : 1 couleur ($color$) $\rightarrow$ couleur.
+				\item $stroke(r,g,b)$ : 3 nombres $\rightarrow$ rouge, vert, bleu.
+				\item $stroke(r,g,b,alpha)$ : 4 nombres $\rightarrow$ rouge, vert, bleu, transparence.
+			\end{itemize}
+			\item $background()$ : remplit la zone de dessin d'une couleur (mêmes arguments que pour $stroke$).
+			\item $strokeWeight(n)$ : règle l'épaisseur du crayon, en pixel.
+			\item $point(x,y)$ : dessine un point aux coordonnées $(x,y)$.
+			\item $line(x1,y1,x2,y2)$ : dessine une ligne du point $(x1,y1)$ au point $(x2,y2)$.
+			\item $circle(x,y,r)$ : dessine un cercle centré en $(x,y)$ et de rayon $r$.
+			\item $fill(couleur)$ : remplit les formes dessinées avec la couleur.
+			\item $noFill()$ : pas de remplissage des formes.
+		\end{itemize}
+		
+\end{document}

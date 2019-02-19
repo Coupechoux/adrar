@@ -29,17 +29,17 @@ def search_v1(value,array):
 def search_v2(value,array):
 	pass
 	
-# def search_v3(value,array):
-	# pass
+def search_v3(value,array):
+	pass
 	
 def search_in_ordered_v1(value,array):
 	pass
-	
+
 def two_biggest(array):
 	pass
-
+	
 def search(value,array):
 	pass
 	
-def search_in_ordered_v2(value,array,index1,index2):
+def search_in_ordered_v2(value,array,index_debut,index_fin):
 	pass

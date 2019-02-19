@@ -139,3 +139,31 @@ function fois(w,c1,c2) {
 	let s = "";
 	return s;
 }
+
+function snake1(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+function snake2(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+function checkerboard(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+function diagonal1(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+function diagonal2(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+
+	
