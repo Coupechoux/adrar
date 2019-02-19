@@ -118,8 +118,24 @@ function emptyTriangle3(h,c1,c2)
 	return s;
 }
 
+function pacman(h,c1) {
+	var s = "";
+	
+	return s;
+}
+
 function hourglass(h,c1,c2) {
 	var s = "";
 	
+	return s;
+}
+
+function plus(w,c1,c2) {
+	let s = "";
+	return s;
+}
+
+function fois(w,c1,c2) {
+	let s = "";
 	return s;
 }

@@ -1,4 +1,3 @@
-
 function fullLine_answer(w,c)
 {
 	var s = "";
@@ -138,34 +137,22 @@ function emptyTriangle3_answer(h,c1,c2)
 	return s;
 }
 
-function pacman_answer(h,c1) {
+function pacman_answer(h,c) {
 	var s = "";
-	var nbC1 = h;
-	var nbC2 = 0;
-	if(nbC1%2 == 0) {
-		nbC1--;
+	var nbC = h;
+	if(nbC%2 == 0) {
+		nbC--;
 	}
 	
 	for(var i=0; i<Math.floor(h/2); i++) {
-		for(var j=0; j<nbC2; j++) {
-			s += c2;
-		}
-		s += fullLine_answer(nbC1,c1);
-		nbC1 -= 2;
-		nbC2++;
+		s += fullLine_answer(nbC,c);
+		nbC -= 2;
 	}
 	
-	nbC1 = 1;
-	if(h%2==0) {
-		nbC2--;
-	}
+	nbC = 1;
 	for(var i=0; i<h/2; i++) {
-		for(var j=0; j<nbC2; j++) {
-			s += c2;
-		}
-		s += fullLine_answer(nbC1,c1);
-		nbC1 += 2;
-		nbC2--;
+		s += fullLine_answer(nbC,c);
+		nbC += 2;
 	}
 	
 	return s;
@@ -203,3 +190,57 @@ function hourglass_answer(h,c1,c2) {
 	
 	return s;
 }
+
+function plusEmptyLine_answer(w,c1,c2) {
+	let s = "";
+	let emptyChars = Math.floor((w-1)/2);
+	for(let j=0; j<emptyChars; j++) {
+		s += c2;
+	}
+	s += c1;
+	if(w%2 == 0) {
+		s += c1;
+	}
+	s += "<br/>";
+	
+	return s;
+}
+
+function plus_answer(w,c1,c2) {
+	let s = "";
+	let emptyLines = Math.floor((w-1)/2);
+	for(let i=0; i<emptyLines; i++) {
+		s += plusEmptyLine_answer(w,c1,c2);
+	}
+	for(let j=0; j<=(w+1)%2; j++) {
+		for(let k=0; k<w; k++) {
+			s += c1;
+		}
+		s += "<br/>";
+	}
+	for(let i=0; i<emptyLines; i++) {
+		s += plusEmptyLine_answer(w,c1,c2);
+	}
+	return s;
+}
+
+function fois_answer(w,c1,c2) {
+	let s = "";
+	let pos1 = 0;
+	let pos2 = w-1;
+	for(let i=0; i<w; i++) {
+		for(let j=0; j<w; j++) {
+			if(j == pos1 || j == pos2) {
+				s += c1;
+			}
+			else {
+				s += c2;
+			}
+		}
+		s += "<br/>";
+		pos1 += 1;
+		pos2 -= 1;
+	}
+	return s;
+}
+	
