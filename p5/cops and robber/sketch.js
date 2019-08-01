@@ -7,9 +7,16 @@ let sliderN;
 let posCop;
 let posRobber;
 let lastClick;
+let arrow = "none";
+
+let pikachu;
+let pokeball;
+let caught;
 
 let gameState;
 let turn;
+
+let MODE_AUTO;
 
 function setup() {
 	createCanvas(1000,500);
@@ -29,11 +36,37 @@ function setup() {
 	posRobber = createVector(-1,-1);
 	lastClick = createVector(-1,-1);
 	
+	if(int(random(10)) == 0) {
+		pikachu = createImg('https://www.serebii.net/pokemongo/pokemon/shiny/025.png', '', function () {
+			image(pikachu, 0, 0);
+		});
+	} else {
+		pikachu = createImg('https://www.serebii.net/pokemongo/pokemon/025.png', '', function () {
+			image(pikachu, 0, 0);
+		});
+	}
+	pikachu.hide();
+	pokeball = createImg('https://www.serebii.net/itemdex/sprites/pgl/pokeball.png', '', function () {
+		image(pokeball, 0, 0);
+	});
+	pokeball.hide();
+	caught = createImg('https://img10.androidappsapk.co/300/6/c/1/pikcachu.classic.pikachuclassic.png', '', function () {
+		image(caught, 0, 0);
+	});
+	caught.hide();
+	
+	
+	
+	MODE_AUTO = false;
 	gameState = "newGame";
 }
 
 function draw() {
-	background(150);
+	if(MODE_AUTO) {
+		background(200,200,50);
+	} else {
+		background(150);
+	}
 	fill(0);
 	text("Largeur = "+sliderN.value(), 50, height-70);
 	text(turn,width/2,100);
@@ -77,21 +110,21 @@ function drawGraph() {
 function drawCop() {
 	if(posCop.x >= 0) {
 		fill(0,0,255);
-		ellipse(posCop.x*size, posCop.y*size, size/6, size/6);
+		image(pokeball,posCop.x*size-25,posCop.y*size-25,50,50);
 	}
 }
 
 function drawRobber() {
 	if(posRobber.x >= 0) {
 		fill(255,0,0);
-		ellipse(posRobber.x*size, posRobber.y*size, size/6, size/6);
+		image(pikachu,posRobber.x*size-25,posRobber.y*size-40,80,80);
 	}
 }
 
 function drawVictory() {
 	if(posRobber.x >= 0) {
 		fill(255,0,255);
-		ellipse(posRobber.x*size, posRobber.y*size, size/3, size/3);
+		image(caught,posRobber.x*size-40,posRobber.y*size-40,80,80);
 	}
 }
 
@@ -108,6 +141,11 @@ function positionFromXY(x,y) {
 }
 
 function mousePressed() {
+	if(mouseX > width-10  && mouseX < width && mouseY > height-10 && mouseY < height) {
+		MODE_AUTO = !MODE_AUTO;
+		gameState = "newGame";
+	}
+	
 	let x = mouseX - (width-(N-1)*size)/2;
 	let y = mouseY - 200;
 	pos = positionFromXY(x,y);
@@ -117,10 +155,54 @@ function mousePressed() {
 	}
 }
 
+function keyPressed() {
+	if(keyCode == UP_ARROW) {
+		arrow="up";
+	}
+	if(keyCode == DOWN_ARROW) {
+		arrow="down";
+	}
+	if(keyCode == LEFT_ARROW) {
+		arrow="left";
+	}
+	if(keyCode == RIGHT_ARROW) {
+		arrow="right";
+	}
+}
+
+function posAfterKey(key,pos) {
+	if(key == "up") {
+		if(pos.y == 1) {
+			return [pos.x,0];
+		}
+		if(pos.x == 0 || pos.x == N-1) {
+			return [pos.x,pos.y];
+		}
+	} else if(key=="left") {
+		if(pos.x > 0) {
+			return [pos.x-1,pos.y];
+		} else if(pos.y == 0) {
+			return [pos.x, pos.y];
+		}
+	} else if(key == "down") {
+		if(pos.y == 0) {
+			return [pos.x, 1];
+		}
+	} else if(key == "right") {
+		if(pos.x < N-1) {
+			return [pos.x+1,pos.y];
+		} else if(pos.y==0) {
+			return [pos.x, pos.y];
+		}
+	}
+	return [];
+}
+
 function newGame() {
 	N = sliderN.value();
 	lastClick.x = -1;
 	lastClick.y = -1;
+	arrow = "none";
 	posCop.x = -1;
 	posCop.y = -1;
 	posRobber.x = -1;
@@ -135,13 +217,17 @@ function chooseCopPosition() {
 		posCop.x = lastClick.x;
 		posCop.y = lastClick.y;
 		
-		gameState = "chooseRobberPosition";
+		if(MODE_AUTO) {
+			gameState = "chooseRobberPositionAuto";
+		} else {
+			gameState = "chooseRobberPositionManual";
+		}
 		lastClick.x = -1;
 		lastClick.y = -1;
 	}
 }
 
-function chooseRobberPosition() {
+function chooseRobberPositionManual() {
 	infoTextArea.elt.innerHTML = "Choisissez la position du voleur";
 	if(lastClick.x >= 0) {
 		posRobber.x = lastClick.x;
@@ -151,6 +237,29 @@ function chooseRobberPosition() {
 		lastClick.x = -1;
 		lastClick.y = -1;
 	}
+}
+
+function chooseRobberPositionAuto() {
+	infoTextArea.elt.innerHTML = "Le voleur choisit sa position...";
+	if(N%2 == 0) {
+		posRobber.x = N-1-posCop.x;
+		posRobber.y = 1-posCop.y;
+	} else {
+		if(posCop.x == Math.floor(N/2)) {
+			if(int(random(2))==0) {
+				posRobber.x = posCop.x+1;
+			} else {
+				posRobber.x = posCop.x-1;
+			}
+			posRobber.y = 1-posCop.y;
+		} else {
+			posRobber.x = N-1-posCop.x;
+			posRobber.y = posCop.y;
+		}
+	}
+	gameState = "copMove";
+	lastClick.x = -1;
+	lastClick.y = -1;
 }
 
 function possibleMove(x1,y1,x2,y2) {
@@ -174,19 +283,66 @@ function copMove() {
 			posCop.y = lastClick.y;
 			turn++;
 			
-			if(posCop.x == posRobber.x && posCop.y == posRobber.y) {
-				gameState = "victory";
-				return;
+			if(MODE_AUTO) {
+				gameState = "robberMoveAuto";
+			} else {
+				gameState = "robberMoveManual";
 			}
-			
-			gameState = "robberMove";
 		}
 		lastClick.x = -1;
 		lastClick.y = -1;
 	}
+	if(arrow != "none") {
+		newPos = posAfterKey(arrow, posCop);
+		if(newPos.length > 0)
+		{
+			turn++;
+			posCop.x = newPos[0];
+			posCop.y = newPos[1];
+			
+			if(MODE_AUTO) {
+				gameState = "robberMoveAuto";
+			} else {
+				gameState = "robberMoveManual";
+			}
+		}
+		arrow = "none";
+	}
+			
+	if(posCop.x == posRobber.x && posCop.y == posRobber.y) {
+		gameState = "victory";
+		return;
+	}
 }
 
-function robberMove() {
+function robberMoveManual() {
+	infoTextArea.elt.innerHTML = "Où voulez-vous déplacer le voleur ?";
+	if(lastClick.x >= 0) {
+		if(possibleMove(posRobber.x,posRobber.y,lastClick.x,lastClick.y)) {
+			posRobber.x = lastClick.x;
+			posRobber.y = lastClick.y;
+			
+			gameState = "copMove";
+		}
+		lastClick.x = -1;
+		lastClick.y = -1;
+	}
+	if(arrow != "none") {
+		newPos = posAfterKey(arrow, posRobber);
+		if(newPos.length > 0)
+		{
+			posRobber.x = newPos[0];
+			posRobber.y = newPos[1];
+			gameState = "copMove";
+		}
+		arrow = "none";
+	}
+	if(posCop.x == posRobber.x && posCop.y == posRobber.y) {
+		gameState = "victory";
+	}
+}
+
+function robberMoveAuto() {
 	infoTextArea.elt.innerHTML = "Au tour du <strong>voleur</strong>...";
 	
 	if((posCop.x+posCop.y+posRobber.x+posRobber.y)%2==0) {

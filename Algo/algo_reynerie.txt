@@ -1,0 +1,14 @@
+R1 = (0,0)
+R2 = (100,0)
+R3 = (0,100)
+P1 = random R1, R2, R3
+P2 = random R1, R2, R3 différent de P1
+P1(xA,yA)
+P2(xB,yB)
+Pv un point entre P1 et P2
+
+TANT QUE PV<10
+PV = xm = (xA+xB)/2
+     ym = (yA+yB)/2
+P2 = Pv
+FIN TANT QUE

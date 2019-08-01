@@ -12,6 +12,16 @@ class Noeud {
 		// this.state = "burned"; // Burned
 	}
 	
+	change_center(x,y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	change_size(w,h) {
+		this.width=w;
+		this.height=h;
+	}
+	
 	burn() {
 		if(this.state == "empty") {
 			this.state = "recently burned";

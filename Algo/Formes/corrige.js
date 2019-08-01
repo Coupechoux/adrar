@@ -247,7 +247,6 @@ function fois_answer(w,c1,c2) {
 function snake1_answer(w,c1,c2) {
 	let s = "";
 	for(let i=0; i<w; i++) {
-		console.log(i);
 		if(i%2==0) {
 			s += fullLine_answer(w,c1);
 		}

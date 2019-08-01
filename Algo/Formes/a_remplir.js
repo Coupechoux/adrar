@@ -4,7 +4,13 @@
 
 function fullLine(w,c)
 {
-	var s = "";
+	let s = "";
+	
+	for(let i = 0 ; i<w ; i++) {
+		s += c;
+	}
+	
+	s += "<br/>";
 	
 	return s;
 }
@@ -15,8 +21,9 @@ function fullLine(w,c)
 //			  *****<br/>"
 function fullRectangle(w,h,c)
 {
-	var s="";
-	
+	let s="";
+	s += fullLine(w,c);
+	s += fullLine(w,c);
 	return s;
 }
 
@@ -24,8 +31,15 @@ function fullRectangle(w,h,c)
 // Exemple : "*-----*<br/>"
 function emptyLine(w,c1,c2)
 {
-	var s = "";
-	
+	let s = "";
+	s += c1;	// Bord gauche
+	for(let i = 0 ; i< w-2 ; i++) {		// Répéter w-2 fois
+		s += c2;	// Caractère du milieu
+	}
+	if(w>1) {	// Si la taille est plus grande que 1
+		s += c1;	// Bord droit
+	}
+	s += "<br/>";
 	return s;
 }
 
@@ -35,7 +49,15 @@ function emptyLine(w,c1,c2)
 //			  *****<br/>"
 function emptyRectangle(w,h,c1,c2)
 {
-	var s = "";
+	let s = "";
+	s += fullLine(w,c1);	// Ligne d'en haut
+	
+	for(let i = 0 ; i < h-2 ; i++) {	// Répéter h-2 fois
+		s += emptyLine(w,c1,c2);	// Ajouter une ligne au milieu
+	}
+	if(h > 1) {
+		s += fullLine(w,c1); //  Ligne d'en bas
+	}
 	
 	return s;
 }
@@ -48,7 +70,7 @@ function emptyRectangle(w,h,c1,c2)
 //			  ****<br/>"
 function fullTriangle1(h,c)
 {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
@@ -61,8 +83,16 @@ function fullTriangle1(h,c)
 //			  ****<br/>"
 function fullTriangle2(h,c1,c2)
 {
-	var s = "";
-	
+	let s = "";
+	for(let numLigne = 1 ; numLigne <= h ; numLigne++) {
+		// Ajouter les c2
+		for(let j = 0 ; j < h-numLigne; j++) {
+			s += c2;
+		}
+		
+		// Ajouter une ligne pleine
+		s += fullLine(numLigne,c1);
+	}
 	return s;
 }
 
@@ -74,7 +104,7 @@ function fullTriangle2(h,c1,c2)
 //			  *******<br/>"
 function fullTriangle3(h,c1,c2)
 {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
@@ -87,7 +117,7 @@ function fullTriangle3(h,c1,c2)
 //			  ****<br/>"
 function emptyTriangle1(h,c1,c2)
 {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
@@ -100,7 +130,7 @@ function emptyTriangle1(h,c1,c2)
 //			  ****<br/>"
 function emptyTriangle2(h,c1,c2)
 {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
@@ -113,19 +143,19 @@ function emptyTriangle2(h,c1,c2)
 //			  *******<br/>"
 function emptyTriangle3(h,c1,c2)
 {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
 
 function pacman(h,c1) {
-	var s = "";
+	let s = "";
 	
 	return s;
 }
 
 function hourglass(h,c1,c2) {
-	var s = "";
+	let s = "";
 	
 	return s;
 }

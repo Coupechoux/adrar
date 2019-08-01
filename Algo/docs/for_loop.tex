@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{algorithm,algpseudocode}
+\usepackage[utf8]{inputenc}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\title{Boucle \emph{for}}
+\date{}
+
+\begin{document}
+	\fboxsep0pt
+	\maketitle
+	\section{Syntaxe}	
+	Dans plusieurs langages, la syntaxe de la boucle \emph{for} est la suivante :
+	
+	\begin{center}
+		\begin{minipage}{0.3\textwidth}
+			$for(A;B;C)$ \{\\
+			\hspace*{20px} $D;$\\
+			\hspace*{20px} $E;$\\
+			\}
+		\end{minipage}
+	\end{center}
+	
+	\section{Signification}
+	\noindent$A$ : Initialisation\\
+	$B$ : Condition\\
+	$C$ : Fin de boucle\\
+	$D$ : Corps de la boucle\\
+	$E$ : Corps de la boucle\\
+	
+	\noindent Lorsque le programme "arrive" sur la boucle $for$, il suit le parcours suivant~:
+	
+	\begin{enumerate}
+		\item  il commence par faire le $A$, l'initialisation.
+		\item Ensuite, il teste la condition $B$.
+		\item Si la condition est vraie :
+		\begin{enumerate}
+			\item il passe au corps de la boucle ; c'est ce qu'il y a entre les accolades ($D$ et $E$).
+			\item Il fait la fin de la boucle : le $C$.
+			\item Il retourne en 2, à la condition $B$.
+		\end{enumerate}
+		\item Si la condition est fausse, la boucle est terminée. Le programme \emph{ne} fait \emph{pas} ce qu'il y a dans les accolades, et passe directement à la suite.
+	\end{enumerate}
+	\section{Exemple (en js)}			
+		\begin{lstlisting}
+			let a = 3;
+			for(let i = 0 ; i<7 ; i += 2) {
+				console.log("Bonjour numero " + i);
+				a *= 2;
+			}
+			console.log("Fin ! La variable a vaut " + a);
+		\end{lstlisting}
+		
+		Le programme se déroule de la manière suivante :
+		
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			Ligne & Variable $a$ & Variable $i$ & Condition & Affichage écran\\
+			\hline
+			\hline
+			1&3&&&\\
+			\hline
+			2 - initialisation&3&0&&\\
+			\hline
+			2 - condition&3&0&Vrai&\\
+			\hline
+			3&3&0&&Bonjour numero 0\\
+			\hline
+			4&6&0&&\\
+			\hline
+			2 - fin de boucle&6&2&&\\
+			\hline
+			2 - condition&6&2&Vrai&\\
+			\hline
+			3&6&2&&Bonjour numero 2\\
+			\hline
+			4&12&2&&\\
+			\hline
+			2 - fin de boucle&12&4&&\\
+			\hline
+			2 - condition&12&4&Vrai&\\
+			\hline
+			3&12&4&&Bonjour numero 4\\
+			\hline
+			4&24&4&&\\
+			\hline
+			2 - fin de boucle&24&6&&\\
+			\hline
+			2 - condition&24&6&Vrai&\\
+			\hline
+			3&24&6&&Bonjour numero 6\\
+			\hline
+			4&48&6&&\\
+			\hline
+			2 - fin de boucle&48&8&&\\
+			\hline
+			2 - condition&48&8&Faux&\\
+			\hline
+			6&48&&&Fin ! La variable a vaut 48\\
+			\hline
+		\end{tabular}
+\end{document}

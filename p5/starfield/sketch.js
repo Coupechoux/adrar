@@ -10,6 +10,7 @@ function setup()
 	{
 		stars.push(new Star());
 	}
+	//frameRate(1);
 }
 
 function draw()
@@ -49,6 +50,7 @@ class Star
 		var y2 = this.r/persistance * sin(this.angle);
 		var c = color(this.red,this.green,this.blue, map(this.r,0,width/2,0,255));
 		stroke(c);
+		strokeWeight(3);
 		line(x1,y1,x2,y2);
 	}
 }

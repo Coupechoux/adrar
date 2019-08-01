@@ -1,0 +1,163 @@
+\documentclass[a4paper,11pt,answers]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{ocgx}
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome}
+\usepackage{fourier}
+\usepackage{tikz}
+\usepackage[french]{babel}
+\frenchbsetup{StandardLists=true}
+
+\newtheorem{definition}{Définition}
+
+\title{L-Système}
+\date{}
+
+\newcommand\ocgsolution[2]{\begin{solution}\showocgs{#1}{$\longrightarrow$} \begin{ocg}{s}{#1}{0}#2\end{ocg}\end{solution}}
+
+\begin{document}
+	\maketitle{}
+	
+	\section{Sujet}\label{intro}
+	Le but de cet exercice est de modéliser un \textbf{L-Système} (ou au moins une version simplifiée).
+	Un L-Système est un système de réécriture. On démarre par un premier \emph{mot}, puis on transforme un certain nombre de fois ce mot en suivant des \emph{règles} pour en obtenir un nouveau. Les \emph{règles} indiquent quelles sont les transformations à faire.
+	
+	Par exemple, on peut avoir le système suivant :
+	\begin{itemize}
+		\item Mot initial : $A$ ;
+		\item Règles :
+		\begin{itemize}
+			\item 'A' est transformé en 'AB' ;
+			\item 'B' est transformé en 'A'.
+		\end{itemize}
+	\end{itemize}
+	
+	En appliquant une première fois les règles sur le mot initial, on obtient le mot $AB$.
+	En appliquant à nouveau les règles sur le mot $\textcolor{red}{A}\textcolor{blue}{B}$, on obtient le mot $\textcolor{red}{AB}\textcolor{blue}{A}$. En appliquant une troisième fois les règles à partir du mot $\textcolor{red}{A}\textcolor{blue}{B}\textcolor{green}{A}$, on obtient le mot $\textcolor{red}{AB}\textcolor{blue}{A}\textcolor{green}{AB}$.
+	
+	On représente souvent les mots ainsi obtenus sous forme graphique. On attribuera arbitrairement à chaque lettre une fonction (avancer d'une unité, tourner à gauche, ...). On peut par exemple utiliser le framework p5 pour pouvoir visualiser les résultats.
+	
+	\section{Version simplifiée}
+	Dans le cadre de cet exercice, on peut définir un L-système de la manière suivante :
+	\begin{definition}
+		Un \textbf{L-Système} simplifié est composé de 2 éléments :
+		\begin{itemize}
+			\item Un mot initial, appelé \textbf{axiome} ;
+			\item Un ensemble de \textbf{règles}, qui indiquent comment transformer les lettres d'un mot. Quand on n'indique pas comment est modifiée une certaine lettre, cela veut dire qu'elle ne sera pas modifiée.
+		\end{itemize}
+	\end{definition}
+	
+	Pour obtenir une représentation visuelle des mots générés par un L-système, il faut imaginer un petit robot qui se déplace sur une zone de dessin, en laissant une trace là où il passe. Le robot est capable de comprendre certaines lettres, qui correspondent chacune à une instruction bien précise.
+	Pour dessiner un mot, le robot se place quelque part dans la zone de dessin, tourné dans un sens, puis regarde les lettres du mot une à une, en suivant les instructions correspondantes à chaque lettre.
+	Dans un premier temps, le robot sera capable de comprendre 3 lettres :
+	\begin{itemize}
+		\item F : avancer de 10 pixels ;
+		\item + : tourner de 90 degrés à gauche ;
+		\item - : tourner de 90 degrés à droite.
+	\end{itemize}
+	Lorsque le robot lit une lettre qu'il ne connaît pas, il oublie cette lettre et passe à la suivante.
+	
+	Traditionnellement, ce robot est appelée une \emph{tortue} (\href{https://en.wikipedia.org/wiki/Turtle_graphics}{Wikipedia}).
+	
+	\subsection{Génération des mots}
+	\begin{questions}
+		\question Le mot initial sera stocké dans une variable. Quel sera le type de cette variable ?
+		\ocgsolution{q_string}{Elle sera de type \textbf{string} : une chaîne de caractères.}
+		\question Comment peut-on stocker l'ensemble des règles ?
+		\ocgsolution{q_tab}{On peut le stocker dans un tableau associatif. La case "A" contiendra la règle de remplacement de "A".}
+		\question Comment pourrait-on alors représenter le L-système donné en exemple dans la partie \ref{intro} ?
+		\ocgsolution{q_lsys}{On peut le stocker dans un tableau associatif, qui aurait deux clés : "axiome" et "regles". La valeur associée à la clé "regles" serait alors elle-même un tableau associatif (cf question précédente).
+		
+		L = \{"axiome":"A", "regles": \{"A":"AB", "B":"A"\}\}}
+		\question Quel mot obtient-on avec le L-système donné en exemple en appliquant 0, 1, 2, 3 et 4 fois les règles de transformation ?
+		\ocgsolution{q_l_ex}{Sans appliquer de transformation, on garde l'axiome : "A". Ensuite, on obtient les mots "AB", "ABA", "ABAAB", "ABAABABA".}
+		\xdef\mycounter{\arabic{question}}
+	\end{questions}
+	\subsection{Dessins associés}
+	\begin{questions}
+		\setcounter{question}{\mycounter}%
+		\question Écrire une fonction permettant de dessiner un mot, en simulant le déplacement de la tortue. On la fera démarrer tournée vers la droite.
+		\question Qu'obtient-on en dessinant le mot $F+F$ ?
+		\ocgsolution{q_m1}{\begin{tikzpicture}\draw[red] (0,0) to (1,0) to (1,1);
+		\end{tikzpicture}}
+		\question Qu'obtient-on en dessinant le mot $F+F-F-F+F$ ?
+		\ocgsolution{q_m2}{\begin{tikzpicture}\draw[red] (0,0) to (1,0) to (1,1) to (2,1) to (2,0) to (3,0);
+		\end{tikzpicture}}
+		\xdef\mycounter{\arabic{question}}
+	\end{questions}
+	\subsection{Quelques exemples}
+	\begin{questions}
+		\setcounter{question}{\mycounter}%
+		\question Dessiner une approximation de la courbe de Koch grâce au L-système dont le mot initial est $F$ et les règles sont : $F\rightarrow F+F-F-F+F$.
+		\ocgsolution{q_dragon}{\href{https://upload.wikimedia.org/wikipedia/commons/9/97/Quadratic_Koch_2.png}{Lien vers une image}}
+		\question Dessiner une approximation de la courbe du dragon avec le L-système dont le mot initial est $FX$ et les règles sont :\begin{itemize} 
+		\item $X\rightarrow X+YF+$ ;
+		\item $Y\rightarrow -FX-Y$.
+	\end{itemize}
+		\ocgsolution{q_koch}{\href{https://upload.wikimedia.org/wikipedia/commons/6/67/DragonCurve_animation.gif}{Lien vers une image}}
+		\xdef\mycounter{\arabic{question}}
+	\end{questions}
+	\section{Version un peu moins simplifiée}
+	Dans la partie précédente, la tortue ne pouvait tourner que de 90 degrés. Dans cette partie, le but est d'avoir une tortue qui tourne d'un angle arbitraire. Il faut donc modifier un peu le code de la tortue pour connaître son angle actuel. Initialement, la tortue démarre avec l'angle 0 : elle regarde vers la droite. Avec un angle de PI, elle regarde à gauche.
+	Lorsqu'une tortue en position $(x,y)$ est tournée avec un certain angle et avance de $n$ pixels, sa nouvelle position est : $(x + n*\cos(angle), y + n*\sin(angle))$.
+
+	\faWarning\, Les angles sont exprimés en radians, pas en degrés ! Pour passer de l'un à l'autre, il suffit de savoir que 180 degré = PI radians (\href{http://lmgtfy.com/?q=conversion+radian+degr%C3%A9}{Lien}).
+	
+	\begin{questions}
+		\setcounter{question}{\mycounter}%
+		\question Dessiner une autre version de la courbe de Koch en utilisant une tortue qui tourne de 60 degré, avec le L-système suivant :
+		\begin{itemize}
+			\item Mot initial : $F$ ;
+			\item Règles : \begin{itemize}
+				\item $F$ $\rightarrow$ $F+F--F+F$.
+			\end{itemize}
+		\end{itemize}
+		
+		\question Dessiner le flocon de Koch. La différence avec le L-système précédent est le mot initial : $F--F--F--$.
+		
+		\question Dessiner un arbre à l'aide du L-système :
+		\begin{itemize}
+			\item Mot initial : $FAB$ ;
+			\item Règles : \begin{itemize}
+				\item $A$ $\rightarrow$ $+FAB++++++++F+++++++$ ;
+				\item $B$ $\rightarrow$ $-FAB++++++++F-------$.
+			\end{itemize}
+		\end{itemize}
+		L'angle utilisé est 22.5 degrés.
+		\xdef\mycounter{\arabic{question}}
+	\end{questions}
+	
+	\section{Version un peu plus moins simplifiée}
+	
+	On peut rajouter une mémoire à la tortue, en lui permettant de comprendre deux nouveaux symboles : '[' et ']'. Le premier veut dire qu'il faut enregistrer la position actuelle de la tortue (emplacement et angle). Le second veut dire qu'il faut charger la position qui a été enregistrée auparavant.
+	
+	\begin{questions}
+		\setcounter{question}{\mycounter}%
+		\question Que va tracer la tortue qui tourne de 90 degrés en lisant le mot $F[F]+F$ ?
+		\ocgsolution{q_m3}{\begin{tikzpicture}\draw[red] (0,0) to (1,0) to (2,0);
+			\draw[red] (1,0) to (1,1);
+			\end{tikzpicture}}
+		\question Que va tracer la tortue qui tourne de 90 degrés en lisant le mot $F[F][+F]-F$ ?
+		\ocgsolution{q_m3}{\begin{tikzpicture}\draw[red] (0,0) to (1,0) to (2,0);
+			\draw[red] (1,0) to (1,1);
+			\draw[red] (1,0) to (1,-1);
+			\end{tikzpicture}}
+		\xdef\mycounter{\arabic{question}}
+	\end{questions}
+	
+	Il est aussi tout à fait possible d'empiler les sauvegardes. Lorsque la tortue doit charger une positions, elle charge la dernière qui a été enregistrée. Celle-ci disparaît alors de la mémoire.
+	
+	Par exemple, la tortue qui tourne de 90 degrés produira, en lisant le mot "\textcolor{red}{F}[\textcolor{blue}{F}[\textcolor{green}{F}]+\textcolor{orange}{F}]-\textcolor{gray}{F}" le dessin :
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[red] (0,0) to (1,0);
+			\draw[blue] (1,0) to (2,0);
+			\draw[green] (2,0) to (3,0);
+			\draw[orange] (2,0) to (2,1);
+			\draw[gray] (1,0) to (1,-1);
+		\end{tikzpicture}
+	\end{center}
+\end{document}

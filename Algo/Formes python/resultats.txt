@@ -1,0 +1,233 @@
+Tests fullLine :
++
+aaaaaa
+//
+##############################
+
+Tests emptyLine :
+r8r
+e
+-++++++++-
+*                  *
+
+Tests fullRectangle :
++
++
++
++
++
+
+----
+
+*****
+*****
+*****
+*****
+*****
+
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+
+
+Tests emptyRectangle :
++
++
++
++
++
+
+----
+
+*****
+*   *
+*   *
+*   *
+*****
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+X----------------------------X
+X----------------------------X
+X----------------------------X
+X----------------------------X
+X----------------------------X
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Tests fullTriangle1 :
++
+
+-
+--
+---
+----
+
+*
+**
+***
+****
+*****
+
+X
+XX
+XXX
+XXXX
+XXXXX
+XXXXXX
+XXXXXXX
+XXXXXXXX
+XXXXXXXXX
+XXXXXXXXXX
+XXXXXXXXXXX
+XXXXXXXXXXXX
+XXXXXXXXXXXXX
+XXXXXXXXXXXXXX
+XXXXXXXXXXXXXXX
+
+
+Tests fullTriangle2 :
++
+
+iii-
+ii--
+i---
+----
+
+    *
+   **
+  ***
+ ****
+*****
+
+              X
+             XX
+            XXX
+           XXXX
+          XXXXX
+         XXXXXX
+        XXXXXXX
+       XXXXXXXX
+      XXXXXXXXX
+     XXXXXXXXXX
+    XXXXXXXXXXX
+   XXXXXXXXXXXX
+  XXXXXXXXXXXXX
+ XXXXXXXXXXXXXX
+XXXXXXXXXXXXXXX
+
+
+Tests fullTriangle3 :
++
+
+iii-
+ii---
+i-----
+-------
+
+    *
+   ***
+  *****
+ *******
+*********
+
+              X
+             XXX
+            XXXXX
+           XXXXXXX
+          XXXXXXXXX
+         XXXXXXXXXXX
+        XXXXXXXXXXXXX
+       XXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXX
+     XXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXX
+   XXXXXXXXXXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXXXXXXXXXXXX
+ XXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Tests emptyTriangle1 :
++
+-
+--
+-o-
+----
+*
+**
+*^*
+*^^*
+*****
+X
+XX
+X X
+X  X
+X   X
+X    X
+X     X
+X      X
+X       X
+X        X
+X         X
+X          X
+X           X
+X            X
+XXXXXXXXXXXXXXX
+
+Tests emptyTriangle2 :
++
+iii-
+ii--
+i-i-
+----
+    *
+   **
+  * *
+ *  *
+*****
+              X
+             XX
+            X X
+           X  X
+          X   X
+         X    X
+        X     X
+       X      X
+      X       X
+     X        X
+    X         X
+   X          X
+  X           X
+ X            X
+XXXXXXXXXXXXXXX
+
+Tests emptyTriangle3 :
++
+
+iii-
+ii-i-
+i-iii-
+-------
+
+    *
+   * *
+  *   *
+ *     *
+*********
+
+              X
+             X X
+            X   X
+           X     X
+          X       X
+         X         X
+        X           X
+       X             X
+      X               X
+     X                 X
+    X                   X
+   X                     X
+  X                       X
+ X                         X
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+

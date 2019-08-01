@@ -1,6 +1,15 @@
 var nodes = [];
-var N = 41;
-var pix_size = 800;
+var N = 101;
+var pix_size = 450;
+var node_size = 100;
+var x_min = 20;
+var x_max = 30;
+var y_min = 25;
+var y_max = 30;
+var xc = (x_min+x_max)/2;
+var yc = (y_min+y_max)/2;
+var emax = (x_max-x_min>y_max-y_min)?x_max-x_min:y_max-y_min;
+var sc = pix_size/((emax+1)*node_size);
 var button_validate;
 var availableFirefightersTextArea;
 var scoreTextArea;
@@ -8,13 +17,12 @@ var availableFirefighters;
 
 function setup() {
 	createCanvas(pix_size,pix_size);
-	var pas = pix_size/(N+1);
 	for(var i=1; i<=N; i++) {
-		var x = i*pas;
+		var y = i*node_size-node_size/2;
 		for(var j=1; j<=N; j++) {
-			var y = j*pas;
+			var x = j*node_size-node_size/2;
 			var index = (i-1)*N+j-1;
-			append(nodes, new Noeud(x,y,pas,pas));
+			append(nodes, new Noeud(x,y,node_size,node_size));
 			if(i>1) {
 				var index2 = (i-2)*N+j-1;
 				nodes[index2].add_neighbor(nodes[index]);
@@ -35,20 +43,30 @@ function setup() {
 	scoreTextArea=createElement('h3',"");
 	setAvailableFirefightersText();
 	//nodes[int(N*N/2+N/2)].burn();
-	nodes[int(nodes.length/2)].burn();
+	// nodes[int(nodes.length/2)].burn();
+	nodes[25*51+25].burn();
 }
 
 function draw() {
 	background(255);
+	
+	scale(sc);
+	translate(-(xc-emax/2)*node_size,-(yc-emax/2)*node_size);
+	
 	for(var i=0; i<nodes.length; i++) {
+		var x = i%N;
+		var y = Math.floor(i/N);
 		nodes[i].draw();
 	}
 }
 
 function mousePressed() {
-	var pas = pix_size/(N+1);
-	var i = Math.floor(mouseX/pas-0.5);
-	var j = Math.floor(mouseY/pas-0.5);
+	var i = map(mouseY,0,height,yc-(emax+1)/2,yc+(emax+1)/2);
+	var j = map(mouseX,0,width,xc-(emax+1)/2,xc+(emax+1)/2);
+	console.log(i,j);
+	console.log(emax);
+	i = Math.round(i);
+	j = Math.round(j);
 	var index = i*N+j;
 	
 	if(i>=0 && i<N && j>=0 && j<N) {
@@ -65,8 +83,23 @@ function mousePressed() {
 	}
 }
 
-function setAvailableFirefightersText()
-{
+function mouseWheel(event) {
+	if(event.delta < 0) {
+		x_min += 0.5;
+		x_max -= 0.5;
+		y_min += 0.5;
+		y_max -= 0.5;
+		console.log("Ok !");
+	} else if(event.delta > 0) {
+		x_min -= 0.5;
+		x_max += 0.5;
+		y_min -= 0.5;
+		y_max += 0.5;
+	}
+	updateCoords();
+}
+
+function setAvailableFirefightersText() {
 	var plural = "";
 	if(availableFirefighters >1) {
 		plural = "s";
@@ -76,8 +109,7 @@ function setAvailableFirefightersText()
 	availableFirefightersTextArea.elt.innerHTML = s;
 }
 
-function setScoreText(n)
-{
+function setScoreText(n) {
 	var plural = "";
 	if(n >1) {
 		plural = "s";
@@ -87,8 +119,7 @@ function setScoreText(n)
 	scoreTextArea.elt.innerHTML = s;
 }
 
-function newTurn()
-{
+function newTurn() {
 	var newBurned = propagate();
 	if(newBurned == 0) {
 		var totalBurned=0;
@@ -102,9 +133,36 @@ function newTurn()
 }
 
 function keyPressed() {
-	if (keyCode === ENTER) {
-		newTurn();
+	switch(keyCode) {
+		case ENTER:
+		case 32:
+			newTurn();
+			break;
+		case UP_ARROW:
+			y_min -= 1;
+			y_max -= 1;
+			break;
+		case LEFT_ARROW:
+			x_min -= 1;
+			x_max -= 1;
+			break;
+		case DOWN_ARROW:
+			y_min += 1;
+			y_max += 1;
+			break;
+		case RIGHT_ARROW:
+			x_min += 1;
+			x_max += 1;
+			break;
 	}
+	updateCoords();
+}
+
+function updateCoords() {
+	xc = (x_min+x_max)/2;
+	yc = (y_min+y_max)/2;
+	emax = (x_max-x_min>y_max-y_min)?x_max-x_min:y_max-y_min;
+	sc = pix_size/((emax+1)*node_size);
 }
 
 function propagate() {
@@ -124,6 +182,7 @@ function propagate() {
 	for(var i=0; i<newBurned.length;i++) {
 		newBurned[i].burn();
 	}
+	
 	
 	setAvailableFirefightersText();
 	return newBurned.length;

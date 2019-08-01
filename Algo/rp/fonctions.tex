@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+\pagestyle{empty}
+
+\begin{document}
+	\section*{Groupe 1}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_1(t) {
+			let s = "";
+			for(let i = 0 ; i < t.length ; i++) {
+				let c = t[i];
+				let n = 4;
+				if(c[0] == "J") {
+					n = 1;
+				} else if(c[0] == "Q") {
+					n = 2;
+				} else if(c[0] == "K") {
+					n = 3;
+				}
+				n *= 5;
+				if(c[1] == "(*$\heartsuit$*)") {
+					n += 1;
+				} else if(c[1] == "(*$\diamondsuit$*)") {
+					n += 2;
+				} else if(c[1] == "(*$\clubsuit$*)") {
+					n += 3;
+				} else {
+					n += 4;
+				}
+				s += groupe_2(n);
+			}
+			return s;
+		}
+	\end{lstlisting}
+	Entrée du programme : t - un tableau de chaînes de caractères. 
+	
+	\vspace{1em}
+	\noindent Un tableau est une collection de plusieurs variables. t.length correspond à la taille du tableau, c'est-à-dire au nombre de variables à l'intérieur.
+	t[0] correspond à la première variable, t[1] à la suivante, etc.
+	
+	Exemple :
+	\begin{lstlisting}
+		t = ["Bonjour", 42, 3.5];
+	\end{lstlisting}
+	$t.length$ vaut $3$.\\$t[0]$ vaut $"Bonjour"$.\\$t[1]$ vaut $42$.\\$t[2]$ vaut $3.5$.
+	\newpage
+	\section*{Groupe 2}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_2(n) {
+			let s = "";
+			for(let i = 0 ; i < 6 ; i++) {
+				s += n%2;
+				n = Math.floor(n/2); // Division entiere, on oublie les chiffres apres la virgule
+			}
+			s = groupe_3(s);
+			return s;
+		}
+	\end{lstlisting}
+	Entrée du programme : un entier positif $n$.
+	
+	\vspace{1em}
+	\noindent Rappel : $n\%2 \longrightarrow$ n modulo 2. C'est le reste de la division euclidienne (=~entière) de $n$ par $2$. C'est combien il me reste une fois que j'ai enlevé $2$ autant que je pouvais à $n$.
+	
+	\newpage
+	\section*{Groupe 3}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_3(s) {
+			let result = "";
+			for(let i = 0 ; i < s.length ; i++) {
+				result += s[s.length-1-i];
+			}
+			return result;
+		}
+	\end{lstlisting}
+	Entrée du programme : une chaîne de caractères $s$.
+	
+	\vspace{1em}
+	\noindent $s.length$ correspond à la taille de $s$, c'est-à-dire à son nombre de lettres/symboles. $s[0]$ correspond à la première lettre de $s$, $s[1]$ à la deuxième, etc.
+	
+	\newpage
+	\section*{Groupe 4}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_4(s,p) {
+			let result = "";
+			for(let i = 6*p ; i < 6*p+6 ; i++) {
+				result += s[i];
+			}
+			return result;
+		}
+	\end{lstlisting}
+	Entrées du programme :
+	\begin{enumerate}
+		\item Une chaîne de caractères $s$ ;
+		\item Un entier positif $p$.
+	\end{enumerate}
+	
+	\vspace{1em}
+	\noindent $s[0]$ correspond à la première lettre de $s$, $s[1]$ à la deuxième, etc.
+		
+	\newpage
+	\section*{Groupe 5}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_5(s) {
+			let n = 0;
+			for(let i = 0 ; i < s.length ; i++) {
+				n = 2*n + parseInt(s[i]);
+			}
+			return n;
+		}
+	\end{lstlisting}
+	Entrée du programme : une chaîne de caractères $s$.
+	
+	\vspace{1em}
+	\noindent $s.length$ correspond à la taille de $s$, c'est-à-dire à son nombre de lettres/symboles. $s[0]$ correspond à la première lettre de $s$, $s[1]$ à la deuxième, etc.\\
+	$parseInt$ permet de convertir une chaîne de caractères en un entier. Par exemple, $parseInt("1")$ vaut $1$.
+	
+	
+	\newpage
+	\section*{Groupe 6}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_6(s) {
+			for(let p = 0 ; p < s.length/6 ; p++) {
+				let b = groupe_4(s,p);
+				let n = groupe_5(b);
+				let n2 = n%5;
+				let n1 = (n/5)%5;
+				if(n1 == 1) {
+					ecrire_au_tableau("Valet de ");
+				} else if(n1 == 2) {
+					ecrire_au_tableau("Dame de ");
+				} else if(n1 == 3) {
+					ecrire_au_tableau("Roi de ");
+				} else {
+					ecrire_au_tableau("As de ");
+				}
+		
+				if(n2 == 1) {
+					ecrire_au_tableau("coeur");
+				} else if(n2 == 2) {
+					ecrire_au_tableau("carreau");
+				} else if(n2 == 3) {
+					ecrire_au_tableau("trefle");
+				} else {
+					ecrire_au_tableau("pique");
+				}
+				ecrire_au_tableau("\n"); // \n correspond a un retour a la ligne
+			}
+		}
+	\end{lstlisting}
+	Entrée du programme : une chaîne de caractères $s$.
+	
+	\vspace{1em}
+	\noindent $s.length$ correspond à la taille de $s$, c'est-à-dire à son nombre de lettres/symboles.
+	
+	\newpage
+	\section*{Groupe 7}
+	\begin{lstlisting}[escapeinside={(*}{*)}]
+		function groupe_7(t) {
+			let b = groupe_1(t);	
+			ecrire_au_tableau("Code = " + b);
+			groupe_6(b);
+		}
+	\end{lstlisting}
+	Entrée du programme : un tableau de chaînes de caractères $t$.
+	
+	\vspace{1em}
+	\noindent Un tableau est une collection de plusieurs variables. t.length correspond à la taille du tableau, c'est-à-dire au nombre de variables à l'intérieur.
+
+\end{document}
